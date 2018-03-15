@@ -28,3 +28,8 @@ in the http port
 ```
 docker run -e REMOTE_HOST=www.marcnuri.com -e REMOTE_PORT=80 -p 8080:80 marcnuri/port-forward
 ```
+
+## Docker hub
+
+Docker image hosted at Docker Hub:
+https://hub.docker.com/r/marcnuri/port-forward/
