@@ -6,7 +6,7 @@ LABEL MAINTAINER "Marc Nuri" <marc@marcnuri.com>
 EXPOSE 80
 
 ENV REMOTE_HOST \
-	REMOTE_PORT
+	REMOTE_PORT=80
 
 RUN echo "Installing base packages" \
 	&& apk add --update --no-cache \
@@ -14,4 +14,5 @@ RUN echo "Installing base packages" \
 	&& echo "Removing apk cache" \
 	&& rm -rf /var/cache/apk/
 
-CMD socat tcp-listen:80,reuseaddr,fork tcp:$REMOTE_HOST:$REMOTE_PORT
+CMD socat tcp-listen:80,reuseaddr,fork tcp:$REMOTE_HOST:$REMOTE_PORT & pid=$! && trap "kill $pid" SIGINT && \
+	echo "Socat started: Redirecting traffic to $REMOTE_HOST:$REMOTE_PORT ($pid)" && wait $pid
