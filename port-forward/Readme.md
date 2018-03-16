@@ -11,12 +11,13 @@ Variable | Description | Optional
 -------- | ----------- | --------
 REMOTE_HOST | IP or address of the host you want to forward traffic to | no
 REMOTE_PORT | Port on remote host to forward traffic to | yes (80)
+LOCAL_PORT | Port where container listens | yes (80)
 
 The `socat` process within the container will listen by default to port 80, use `-p`docker
 flag to map the port of the local machine where it will listen to traffic to be forwarded.
 
 ```
-docker run -e REMOTE_HOST=<remote_host> -e REMOTE_PORT=<remote_port> -p <local_port>:80 marcnuri/part-forward
+docker run -e REMOTE_HOST=<remote_host> -e REMOTE_PORT=<remote_port> -p <exposed_local_port>:<local_port> marcnuri/part-forward
 ```
 
 
