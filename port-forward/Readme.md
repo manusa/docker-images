@@ -17,7 +17,7 @@ The `socat` process within the container will listen by default to port 80, use 
 flag to map the port of the local machine where it will listen to traffic to be forwarded.
 
 ```
-docker run -e REMOTE_HOST=<remote_host> -e REMOTE_PORT=<remote_port> -e LOCAL_PORT=<local_port> -p <exposed_local_port>:<local_port> marcnuri/part-forward
+docker run -e REMOTE_HOST=<remote_host> -e REMOTE_PORT=<remote_port> -e LOCAL_PORT=<local_port> -p <exposed_local_port>:<local_port> marcnuri/port-forward
 ```
 
 
