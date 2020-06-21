@@ -1,0 +1,32 @@
+name: Scheduled tests (E2E test)
+
+on:
+  push:
+  schedule:
+    - cron: '0 1 * * *' # Everyday at 1
+
+jobs:
+  htpasswd:
+    name: htpasswd
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create file
+        run: docker run --rm marcnuri/htpasswd -Bbn aUserName aPassword > htpasswdTemp
+      - name: Verify file
+        run: cat htpasswdTemp | grep aUserName
+  node-10-docker-alpine:
+    name: node-10-docker-alpine
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check version
+        run: docker run --rm marcnuri/node-10-docker-alpine -v | grep 'v10.'
+  port-fowrard:
+    name: port-fowrard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Image in Bakcground
+        run: docker run --rm -e REMOTE_HOST=www.marcnuri.com -e REMOTE_PORT=80 -e LOCAL_PORT=80 -p 80:80 marcnuri/port-forward > out.txt &
+      - name: Check Image
+        run: |
+          count=0;while ( ((count < 10)) && ! grep 'Socat' out.txt ); do ((count=count+1)) && sleep 1; done
+          curl localhost

@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 MAINTAINER Marc Nuri <marc@marcnuri.com>
-LABEL MAINTAINER "Marc Nuri" <marc@marcnuri.com>
+LABEL MAINTAINER="Marc Nuri <marc@marcnuri.com>"
 
 ARG DEF_REMOTE_PORT=80
 ARG DEF_LOCAL_PORT=80
