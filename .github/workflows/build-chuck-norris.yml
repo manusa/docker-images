@@ -1,0 +1,21 @@
+name: Build and Push Chuck Norris
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  chuck-norris:
+    name: Chuck Norris
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Dockerize
+        uses: manusa/actions-publish-docker@v1.1.0
+        with:
+          name: marcnuri/chuck-norris
+          dockerfile path: ./chuck-norris/
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}

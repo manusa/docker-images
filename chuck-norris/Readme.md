@@ -1,7 +1,7 @@
 Chuck Norris Quotes as a Service
 ================================
 
-Simple docker image that will print a Chuck Norris quote for each request.
+Simple docker image that will return a Chuck Norris quote for each HTTP request.
 
 Besides the fun, this container image has no real world purpose. I personally use it for
 talks and demos.
