@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image-name: ['chuck-norris', 'golang-1.16-java11']
+        image-name: ['chuck-norris', 'golang-1.16-java11', 'golang-1.17-java11']
     steps:
       - name: Checkout
         uses: actions/checkout@v1
