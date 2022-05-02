@@ -1,4 +1,4 @@
-FROM golang:1.15.11
+FROM golang:1.15.15
 
 MAINTAINER Marc Nuri <marc@marcnuri.com>
 LABEL MAINTAINER="Marc Nuri <marc@marcnuri.com>"
