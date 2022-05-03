@@ -16,3 +16,8 @@ health:
     enabled: true
     interval: 10s
     threshold: 3
+validation:
+  manifests:
+    urls:
+      allow:
+        - ^https?://
