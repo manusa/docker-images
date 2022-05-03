@@ -1,0 +1,24 @@
+name: Build and Push Windows Images
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-push:
+    name: Build and Push
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image-name: ['docker-registry-windows']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Dockerize
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker build -t marcnuri/${{ matrix.image-name }} .\\${{ matrix.image-name }}\\
+          docker images
+          docker push marcnuri/${{ matrix.image-name }}:latest
