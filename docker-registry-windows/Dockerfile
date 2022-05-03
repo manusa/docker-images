@@ -11,8 +11,7 @@ RUN mkdir src\github.com\docker ; \
     cd distribution ; \
     git checkout -q $env:DISTRIBUTION_VERSION ; \
     go env -w GO111MODULE=off ; \
-    go build -o registry.exe cmd/registry/main.go ; \
-    dir
+    go build -o registry.exe cmd/registry/main.go
 
 
 FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
