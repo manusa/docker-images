@@ -3,7 +3,7 @@ name: Scheduled tests (E2E test)
 on:
   push:
   schedule:
-    - cron: '0 1 * * *' # Everyday at 1
+    - cron: '0 1 * * *' # Every day at 1
 
 jobs:
   htpasswd:
@@ -20,11 +20,11 @@ jobs:
     steps:
       - name: Check version
         run: docker run --rm marcnuri/node-10-docker-alpine -v | grep 'v10.'
-  port-fowrard:
-    name: port-fowrard
+  port-forward:
+    name: port-forward
     runs-on: ubuntu-latest
     steps:
-      - name: Run Image in Bakcground
+      - name: Run Image in Background
         run: docker run --rm -e REMOTE_HOST=www.marcnuri.com -e REMOTE_PORT=80 -e LOCAL_PORT=80 -p 80:80 marcnuri/port-forward > out.txt &
       - name: Check Image
         run: |
