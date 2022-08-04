@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.16
 
 MAINTAINER Marc Nuri <marc@marcnuri.com>
 LABEL MAINTAINER="Marc Nuri <marc@marcnuri.com>"
