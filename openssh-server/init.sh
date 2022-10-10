@@ -2,6 +2,14 @@
 
 set -e
 
+# Specific for OpenShift or environments where container user is random
+mkdir -p ~/.ssh
+chmod 770 ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+
+echo "Current container user is: $(whoami)"
+
 if [ -z "$PUBLIC_KEY" ]; then
   echo "PUBLIC_KEY is required"
   exit 1
