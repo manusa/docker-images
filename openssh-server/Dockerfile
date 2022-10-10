@@ -21,14 +21,15 @@ RUN \
   && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config  \
   && sed -i '/^AllowTcpForwarding/c\AllowTcpForwarding yes' /etc/ssh/sshd_config              \
   && sed -i '/^GatewayPorts/c\GatewayPorts clientspecified' /etc/ssh/sshd_config              \
+  && sed -i '\,^AuthorizedKeysFile,c\AuthorizedKeysFile /opt/ssh-config/authorized_keys'      \
+         /etc/ssh/sshd_config                                                                 \
   && echo "StrictModes no" >> /etc/ssh/sshd_config                                            \
   && echo "Adding base image user (1000)"                                                     \
   && adduser --disabled-password --uid 1000 "1000"                                            \
-  && mkdir -p /home/1000/.ssh                                                                 \
-  && chmod 770 /home/1000/.ssh                                                                \
-  && touch /home/1000/.ssh/authorized_keys                                                    \
-  && chmod 600 /home/1000/.ssh/authorized_keys                                                \
-  && chown -R 1000:1000 /home/1000/.ssh                                                       \
+  && mkdir -p /opt/ssh-config                                                                 \
+  && chmod 777 /opt/ssh-config                                                                \
+  && touch /opt/ssh-config/authorized_keys                                                    \
+  && chmod 666 /opt/ssh-config/authorized_keys                                                \
   && addgroup "1000" "root"                                                                   \
   && echo "Removing apk cache"                                                                \
   && rm -rf /var/cache/apk/
