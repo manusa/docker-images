@@ -17,11 +17,12 @@ jobs:
           'golang-1.16-java11',
           'golang-1.17-java11',
           'golang-1.18-java17',
-          'golang-1.19-java17'
+          'golang-1.19-java17',
+          'openssh-server'
         ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Dockerize
         uses: manusa/actions-publish-docker@v1.1.0
         with:
