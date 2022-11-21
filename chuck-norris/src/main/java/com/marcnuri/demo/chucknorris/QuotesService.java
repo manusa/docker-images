@@ -1,9 +1,10 @@
 package com.marcnuri.demo.chucknorris;
 
-import java.util.Arrays;
+import javax.inject.Singleton;
 import java.util.Random;
 
-public class Quotes {
+@Singleton
+public class QuotesService {
 
   private static final String[] QUOTES = new String[]{
     "\"It works on my machine\" always holds true for Chuck Norris.",
@@ -294,9 +295,13 @@ public class Quotes {
     "With the rising cost of gasoline, Chuck Norris is beginning to worry about his drinking habit.",
     "Wo hu cang long. The translation from Mandarin Chinese reads: \"Crouching Chuck, Hidden Norris\""
   };
-  private static final Random RANDOM = new Random();
 
-  public static String random() {
-    return QUOTES[RANDOM.nextInt(QUOTES.length)];
+  private final Random random;
+  public QuotesService() {
+    random = new Random();
+  }
+
+  public String random() {
+    return QUOTES[random.nextInt(QUOTES.length)];
   }
 }
