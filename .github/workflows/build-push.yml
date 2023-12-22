@@ -20,6 +20,7 @@ jobs:
           'golang-1.18-java17',
           'golang-1.19-java17',
           'golang-1.20-java17',
+          'golang-1.21-java17',
           'openssh-server'
         ]
     steps:
