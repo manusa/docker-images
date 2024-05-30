@@ -33,8 +33,8 @@ RUN echo "Configuring Squid for simple auth" \
   && echo "cache_log stdio:$CACHE_LOG_FILE" >> /etc/squid/squid.conf \
   && sed -i '/^coredump_dir/c\#' /etc/squid/squid.conf \
   && echo "coredump_dir $CACHE_DIR" >> /etc/squid/squid.conf \
-  && echo "access_log stdio:$ACCESS_LOG_FILE squid" >> /etc/squid/squid.conf \
-  && echo "debug_options ALL,9" >> /etc/squid/squid.conf
+  && echo "access_log stdio:$ACCESS_LOG_FILE squid" >> /etc/squid/squid.conf
+#  && echo "debug_options ALL,9" >> /etc/squid/squid.conf
 
 RUN mkdir -p $SQUID_DIR \
   && mkdir -p $CACHE_DIR \
