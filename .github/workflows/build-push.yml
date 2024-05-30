@@ -21,11 +21,12 @@ jobs:
           'golang-1.19-java17',
           'golang-1.20-java17',
           'golang-1.21-java17',
-          'openssh-server'
+          'openssh-server',
+          'squid-simple-auth'
         ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Dockerize
         uses: manusa/actions-publish-docker@v1.1.0
         with:
