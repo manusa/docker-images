@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <version.quarkus>1.11.0.Final</version.quarkus>
+    <version.quarkus>2.16.8.Final</version.quarkus>
     <version.common-compress>1.20</version.common-compress>
     <version.zt-exec>1.12</version.zt-exec>
     <quarkus.banner.enabled>false</quarkus.banner.enabled>
